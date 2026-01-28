@@ -1,0 +1,13 @@
+<div class="container" id="post"></div>
+
+<script>
+const slug = new URLSearchParams(window.location.search).get('slug');
+
+fetch(`/blogs/${slug}.md`)
+  .then(res => res.text())
+  .then(text => {
+    document.getElementById('post').innerHTML = marked.parse(text);
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

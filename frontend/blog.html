@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | GuardianEye Inspections Inc.</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Shared Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+                <img src="images/logo1.png" alt="GuardianEye Logo" class="logo-img">
+                <h2>GuardianEye<span>.</span></h2>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="blog.html" style="color: var(--primary-color);">Blog</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#booking" class="btn-nav">Schedule Now</a></li>
+        </ul>
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= BLOG HERO ================= -->
+<section class="hero" style="height:45vh;">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <h1>Inspection Insights</h1>
+        <p>Expert guidance, maintenance tips, and home inspection knowledge you can trust.</p>
+    </div>
+</section>
+
+<!-- ================= BLOG LIST ================= -->
+<div class="features-grid" id="blog-list"></div>
+
+<script>
+fetch('/blogs')
+  .then(res => res.json())
+  .then(posts => {
+    const container = document.getElementById('blog-list');
+
+    posts.forEach(post => {
+      container.innerHTML += `
+        <div class="feature-card">
+          <h3>${post.title}</h3>
+          <p style="color:#aaa;font-size:0.9rem;">
+            ${new Date(post.date).toDateString()}
+          </p>
+          <p>${post.description}</p>
+          <a href="blog-post.html?slug=${post.slug}" class="btn-secondary">
+            Read More
+          </a>
+        </div>
+      `;
+    });
+  });
+</script>
+
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="container footer-content">
+        <div class="footer-info">
+            <img src="images/logo1.png" alt="GuardianEye Logo" style="height:140px;">
+            <h3>GuardianEye Inspections Inc.</h3>
+            <p>Serving Edmonton, St. Albert, Sherwood Park, and surrounding communities.</p>
+        </div>
+
+        <div class="footer-contact">
+            <p><i class="fas fa-phone"></i> 587-568-1140</p>
+            <p><i class="fas fa-envelope"></i> info@guardianeye.com</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 GuardianEye Inspections Inc. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- ================= MOBILE NAV SCRIPT ================= -->
+<script>
+const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
+
+        burger.classList.toggle('toggle');
+    });
+};
+navSlide();
+</script>
+
+</body>
+</html>

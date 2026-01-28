@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianEye Inspections Inc. | Edmonton Home Inspection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #d4af37; /* Gold/Yellow accent from reference logo */
+            --dark-bg: #1a1a1a;       /* Dark Grey background */
+            --darker-bg: #121212;     /* Almost Black */
+            --light-text: #f4f4f4;
+            --gray-text: #cccccc;
+            --card-bg: #252525;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--light-text);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--darker-bg);
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 4px;
+            transition: 0.3s;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--darker-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            
+            display: flex;
+            justify-content: center;
+            background-color: #fff; 
+            color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 95px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;   
+        }
+
+        .logo h1,
+        .logo h2 {
+            font-size: 2.2rem;
+            color: #000;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            font-size: 1.3rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-nav {
+            background-color: var(--primary-color);
+            color: #fff !important;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        /* Mobile Menu Burger */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* FORCE NAVBAR LOGO SIZE */
+        
+        .logo-img {
+        height: 180px;              /* bigger logo */
+        width: auto;
+        display: block;
+        transform: translateY(55px); /* ⬇️ move logo down */
+        margin-left: -220px;    /* ⬅️ moves logo image left */
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 85vh;
+            /* Placeholder city image similar to reference */
+            background-image: url('https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+            margin: auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background-color: var(--dark-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+        
+        .section-header p {
+            color: var(--gray-text);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: var(--gray-text);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background-color: var(--darker-bg);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            /* Grayscale filter to match professional tone, optional */
+            filter: grayscale(20%);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .subtitle {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray-text);
+        }
+        /* HORIZONTAL AUTO-SCROLL GALLERY */
+
+        .gallery-slider {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 50px;
+        }
+        .gallery-section {
+        padding-bottom: 120px; /* creates space before Contact */
+        }
+
+        .gallery-track {
+        display: flex;
+        gap: 30px;
+        width: max-content;
+        animation: scrollGallery 140s linear infinite;
+        }
+
+        .gallery-slider:hover .gallery-track {
+        animation-play-state: paused;
+        }
+
+        .gallery-track img {
+        width: 380px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 14px;
+        flex-shrink: 0;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s ease;
+        }
+
+        .gallery-track img:hover {
+        transform: scale(1.06);
+        }
+
+        @keyframes scrollGallery {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+        }
+
+
+        /* Booking Section */
+        .booking-section {
+            padding: 80px 0;
+            background-color: var(--dark-bg);
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 40px;
+        }
+
+        .footer-info h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-info p {
+             color: var(--gray-text);
+             margin-bottom: 20px;
+        }
+
+        .footer-contact p {
+            margin: 10px 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 100vh;
+                top: 80px;
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 60%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            }
+            .nav-links li {
+                opacity: 0;
+                margin: 30px 0;
+            }
+            .burger {
+                display: block;
+            }
+            .nav-active {
+                transform: translateX(0%);
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image {
+                order: 2;
+            }
+            .about-text {
+                order: 1;
+            }
+        }
+
+        @keyframes navLinkFade {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#" style="display:flex;align-items:center;gap:10px;">
+                    <img src="images/logo1.png" alt="GuardianEye Logo" class="logo-img">
+
+                    <h2>GuardianEye<span>.</span></h2>
+                </a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking" class="btn-nav">Schedule Now</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Your Home. Your Safety. Our Vision.</h1>
+            <p>Detail-oriented and customer-focused home inspections in Edmonton, Alberta. Helping you make decisions with complete confidence.</p>
+            <a href="#booking" class="btn-primary">Schedule Inspection</a>
+        </div>
+    </section>
+
+    <section id="services" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Guide Through Every Step</h2>
+                <p>We believe every home tells a story. We help you understand it clearly.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Uncompromising Quality</h3>
+                    <p>Rooted in 15+ years of quality assurance experience, we inspect every detail from foundation to finish.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Clear Reporting</h3>
+                    <p>We provide professional reports that highlight what’s important—actionable insights, not just technical jargon.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Honest Guidance</h3>
+                    <p>Genuine care and approachable guidance to help you protect your investment and make confident decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features-section" style="background-color:#121212;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Inspection Services & Pricing</h2>
+                <p>Transparent pricing with no hidden fees. Thermal imaging included.</p>
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <h3>Full Home Inspection</h3>
+                    <p>Complete inspection of structure, roof, electrical, plumbing, HVAC, and interior/exterior systems.</p>
+                    <p><strong>Starting at $475 + GST</strong></p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Townhouse / Duplex</h3>
+                    <p>Ideal for attached homes with shared walls and utilities.</p>
+                    <p><strong>Starting at $425 + GST</strong></p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Condo / Apartment</h3>
+                    <p>Interior unit inspection including electrical, plumbing, and HVAC systems.</p>
+                    <p><strong>Starting at $325 + GST</strong></p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>4-Point Inspection</h3>
+                    <p>Insurance-focused inspection covering roof, plumbing, electrical & HVAC.</p>
+                    <p><strong>Contact for Pricing</strong></p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>New Construction Inspection</h3>
+                    <p>Pre-delivery inspection to ensure quality and code compliance.</p>
+                    <p><strong>Contact for Pricing</strong></p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Infrared / Thermal Imaging</h3>
+                    <p>Detects hidden moisture, insulation gaps, and heat loss.</p>
+                    <p><strong>Included at no extra cost</strong></p>
+                </div>
+
+            </div>
+
+            <p style="text-align:center;color:#aaa;margin-top:30px;font-size:0.95rem;">
+                Pricing may vary based on property size, age, and location.
+            </p>
+        </div>
+    </section>
+
+
+    <section id="about" class="about-section">
+        <div class="container about-grid">
+            <div class="about-image">
+          <img src="images/founder1.jpg" alt="Founder - GuardianEye Inspections">
+
+            </div>
+            <div class="about-text">
+                <h2>Meet Sachin Nayyar</h2>
+                <span class="subtitle">Founder, GuardianEye Inspections Inc.</span>
+                <p>
+                My name is Sachin Nayyar, and I bring a unique blend of business leadership, 
+                construction-related quality control, and customer-focused service to the home 
+                inspection industry.
+                </p>
+
+                <p>
+                Before becoming a home inspector, I spent over 15 years in roles centered around 
+                quality assurance, operations, and risk-based decision-making across multiple 
+                industries. Most recently, I worked in manufacturing and production leadership 
+                at <strong>Durabuilt Windows & Doors</strong>, where I was directly involved in 
+                daily inspections, defect analysis, process improvement, and maintaining strict 
+                quality standards. This hands-on experience gave me a sharp eye for identifying 
+                issues that others might overlook—an essential skill in home inspections.
+                </p>
+
+                <p>
+                Throughout my career, I’ve been trusted to evaluate systems, analyze performance, 
+                and communicate findings clearly to both leadership teams and customers. Whether 
+                inspecting production lines, reviewing structural components, or identifying 
+                operational risks, my approach has always been the same: 
+                <strong>be thorough, be honest, and be precise</strong>.
+                </p>
+
+                <p>
+                As a home inspector, I apply that same disciplined mindset to every property I 
+                inspect. I understand that a home is often the largest investment a person will 
+                make, and my goal is to help clients make informed decisions with confidence. 
+                I don’t just look for problems—I explain what they mean, how serious they are, 
+                and what steps may be needed next, all in clear, easy-to-understand language.
+                </p>
+
+                <p>
+                My background in customer service, reporting, and stakeholder communication 
+                ensures that my inspection reports are detailed, well-organized, and practical—
+                not filled with unnecessary jargon. I take the time to answer questions and walk 
+                clients through my findings, because I believe a great inspection is as much about 
+                education and transparency as it is about technical knowledge.
+                </p>
+
+                <p>
+                I am detail-oriented and committed to continuous learning in building systems, 
+                safety standards, and inspection best practices. Every inspection I perform is 
+                guided by integrity, professionalism, and respect for my clients’ peace of mind.
+                </p>
+
+                <p>
+                When you hire me, you’re not just getting a home inspector—you’re getting a 
+                professional who understands quality, accountability, and the importance of 
+                getting it right the first time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2>Ready to Schedule?</h2>
+            <p style="color: #ccc; margin-bottom: 30px;">Book your inspection instantly using the calendar below.</p>
+            
+            <div class="calendly-inline-widget" data-url="https://calendly.com/laknavpar/3hours" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+
+            <div class="section-header">
+            <h2>Inspection Gallery</h2>
+            <p>Real inspections. Real details. Real confidence.</p>
+            </div>
+
+            <div class="gallery-slider">
+                <div class="gallery-track">
+                    <img src="images/gallery/1.jpeg" alt="Home inspection exterior" class="gallery-img">
+                    <img src="images/gallery/2.jpeg" alt="Inspector at work" class="gallery-img">
+                    <img src="images/gallery/3.jpeg" alt="Mechanical inspection" class="gallery-img">
+                    <img src="images/gallery/4.jpeg" alt="Interior inspection" class="gallery-img">
+                    <img src="images/gallery/5.jpeg" alt="Roof inspection" class="gallery-img">
+                    <img src="images/gallery/6.jpeg" alt="New construction inspection" class="gallery-img">
+                    <img src="images/gallery/7.jpeg" alt="Home inspection" class="gallery-img">
+                    <img src="images/gallery/8.jpeg" alt="Inspection in progress" class="gallery-img">
+                    <img src="images/gallery/9.jpeg" alt="Property inspection" class="gallery-img">
+                    <img src="images/gallery/10.jpeg" alt="Residential inspection" class="gallery-img">
+                    <img src="images/gallery/11.jpeg" alt="Exterior inspection" class="gallery-img">
+                    <img src="images/gallery/12.jpeg" alt="Inspector analyzing property" class="gallery-img">
+                    <img src="images/gallery/13.jpeg" alt="Foundation inspection" class="gallery-img">
+                    <img src="images/gallery/14.jpeg" alt="Roof structure inspection" class="gallery-img">
+                    <img src="images/gallery/15.jpeg" alt="Attic inspection" class="gallery-img">
+                    <img src="images/gallery/16.jpeg" alt="Electrical inspection" class="gallery-img">
+                    <img src="images/gallery/17.jpeg" alt="Plumbing inspection" class="gallery-img">
+                    <img src="images/gallery/18.jpeg" alt="HVAC inspection" class="gallery-img">
+                    <img src="images/gallery/19.jpeg" alt="Garage inspection" class="gallery-img">
+                    <img src="images/gallery/20.jpeg" alt="Basement inspection" class="gallery-img">
+                    <img src="images/gallery/21.jpeg" alt="Moisture inspection" class="gallery-img">
+                    <img src="images/gallery/22.jpeg" alt="Thermal imaging inspection" class="gallery-img">
+                    <img src="images/gallery/23.jpeg" alt="Safety inspection" class="gallery-img">
+                    <img src="images/gallery/24.jpeg" alt="Structural inspection" class="gallery-img">
+                    <img src="images/gallery/25.jpeg" alt="Pre-purchase inspection" class="gallery-img">
+                    <img src="images/gallery/26.jpeg" alt="Move-in inspection" class="gallery-img">
+                    <img src="images/gallery/27.jpeg" alt="New build inspection" class="gallery-img">
+                    <img src="images/gallery/28.jpeg" alt="Commercial inspection" class="gallery-img">
+                    <img src="images/gallery/29.jpeg" alt="Industrial inspection" class="gallery-img">
+                    <img src="images/gallery/30.jpeg" alt="Property assessment" class="gallery-img">
+                    <img src="images/gallery/31.jpeg" alt="Inspection tools in use" class="gallery-img">
+                    <img src="images/gallery/32.jpeg" alt="Inspector documenting findings" class="gallery-img">
+                    <img src="images/gallery/33.jpeg" alt="On-site inspection" class="gallery-img">
+                    <img src="images/gallery/34.jpeg" alt="Home safety check" class="gallery-img">
+                    <img src="images/gallery/35.jpeg" alt="Quality inspection" class="gallery-img">
+                    <img src="images/gallery/36.jpeg" alt="Detailed inspection" class="gallery-img">
+                    <img src="images/gallery/37.jpeg" alt="Residential property check" class="gallery-img">
+                    <img src="images/gallery/38.jpeg" alt="Inspection report preparation" class="gallery-img">
+                    <img src="images/gallery/39.jpeg" alt="Inspector reviewing results" class="gallery-img">
+                    <img src="images/gallery/41.jpeg" alt="Exterior property check" class="gallery-img">
+                    <img src="images/gallery/42.jpeg" alt="Interior home inspection" class="gallery-img">
+                    <img src="images/gallery/43.jpeg" alt="Inspection walkthrough" class="gallery-img">
+                    <img src="images/gallery/44.jpeg" alt="Inspector at construction site" class="gallery-img">
+                    <img src="images/gallery/45.jpeg" alt="Final inspection review" class="gallery-img">
+                    <img src="images/gallery/46.jpeg" alt="Professional home inspection" class="gallery-img">
+
+                    <!-- duplicate images for smooth infinite loop -->
+                    <img src="images/gallery/1.jpeg" alt="Home inspection exterior" class="gallery-img">
+                    <img src="images/gallery/2.jpeg" alt="Inspector at work" class="gallery-img">
+                    <img src="images/gallery/3.jpeg" alt="Mechanical inspection" class="gallery-img">
+                    <img src="images/gallery/4.jpeg" alt="Interior inspection" class="gallery-img">
+                    <img src="images/gallery/5.jpeg" alt="Roof inspection" class="gallery-img">
+                    <img src="images/gallery/6.jpeg" alt="New construction inspection" class="gallery-img">
+                    <img src="images/gallery/7.jpeg" alt="Home inspection" class="gallery-img">
+                    <img src="images/gallery/8.jpeg" alt="Inspection in progress" class="gallery-img">
+                    <img src="images/gallery/9.jpeg" alt="Property inspection" class="gallery-img">
+                    <img src="images/gallery/10.jpeg" alt="Residential inspection" class="gallery-img">
+                    <img src="images/gallery/11.jpeg" alt="Exterior inspection" class="gallery-img">
+                    <img src="images/gallery/12.jpeg" alt="Inspector analyzing property" class="gallery-img">
+                    <img src="images/gallery/13.jpeg" alt="Foundation inspection" class="gallery-img">
+                    <img src="images/gallery/14.jpeg" alt="Roof structure inspection" class="gallery-img">
+                    <img src="images/gallery/15.jpeg" alt="Attic inspection" class="gallery-img">
+                    <img src="images/gallery/16.jpeg" alt="Electrical inspection" class="gallery-img">
+                    <img src="images/gallery/17.jpeg" alt="Plumbing inspection" class="gallery-img">
+                    <img src="images/gallery/18.jpeg" alt="HVAC inspection" class="gallery-img">
+                    <img src="images/gallery/19.jpeg" alt="Garage inspection" class="gallery-img">
+                    <img src="images/gallery/20.jpeg" alt="Basement inspection" class="gallery-img">
+                    <img src="images/gallery/21.jpeg" alt="Moisture inspection" class="gallery-img">
+                    <img src="images/gallery/22.jpeg" alt="Thermal imaging inspection" class="gallery-img">
+                    <img src="images/gallery/23.jpeg" alt="Safety inspection" class="gallery-img">
+                    <img src="images/gallery/24.jpeg" alt="Structural inspection" class="gallery-img">
+                    <img src="images/gallery/25.jpeg" alt="Pre-purchase inspection" class="gallery-img">
+                    <img src="images/gallery/26.jpeg" alt="Move-in inspection" class="gallery-img">
+                    <img src="images/gallery/27.jpeg" alt="New build inspection" class="gallery-img">
+                    <img src="images/gallery/28.jpeg" alt="Commercial inspection" class="gallery-img">
+                    <img src="images/gallery/29.jpeg" alt="Industrial inspection" class="gallery-img">
+                    <img src="images/gallery/30.jpeg" alt="Property assessment" class="gallery-img">
+                    <img src="images/gallery/31.jpeg" alt="Inspection tools in use" class="gallery-img">
+                    <img src="images/gallery/32.jpeg" alt="Inspector documenting findings" class="gallery-img">
+                    <img src="images/gallery/33.jpeg" alt="On-site inspection" class="gallery-img">
+                    <img src="images/gallery/34.jpeg" alt="Home safety check" class="gallery-img">
+                    <img src="images/gallery/35.jpeg" alt="Quality inspection" class="gallery-img">
+                    <img src="images/gallery/36.jpeg" alt="Detailed inspection" class="gallery-img">
+                    <img src="images/gallery/37.jpeg" alt="Residential property check" class="gallery-img">
+                    <img src="images/gallery/38.jpeg" alt="Inspection report preparation" class="gallery-img">
+                    <img src="images/gallery/39.jpeg" alt="Inspector reviewing results" class="gallery-img">
+                    <img src="images/gallery/41.jpeg" alt="Exterior property check" class="gallery-img">
+                    <img src="images/gallery/42.jpeg" alt="Interior home inspection" class="gallery-img">
+                    <img src="images/gallery/43.jpeg" alt="Inspection walkthrough" class="gallery-img">
+                    <img src="images/gallery/44.jpeg" alt="Inspector at construction site" class="gallery-img">
+                    <img src="images/gallery/45.jpeg" alt="Final inspection review" class="gallery-img">
+                    <img src="images/gallery/46.jpeg" alt="Professional home inspection" class="gallery-img">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            
+            <div class="section-header">
+            <h2>Contact Us</h2>
+            <p>We’re here to answer your questions and schedule your inspection.</p>
+            </div>
+
+            <div class="contact-grid">
+
+                <!-- LEFT: CONTACT INFO -->
+                <div class="contact-info">
+                    <h3>GuardianEye Inspections Inc.</h3>
+
+                    <p><i class="fas fa-map-marker-alt"></i>
+                    1696 27 Street NW,<br>
+                    Edmonton, AB T6T 2T8
+                    </p>
+
+                    <p><i class="fas fa-phone"></i> 587-568-1140</p>
+                    <p><i class="fas fa-envelope"></i> info@guardianeye.com</p>
+
+                    <iframe 
+                    src="https://www.google.com/maps?q=1696%2027%20Street%20NW%20Edmonton%20AB%20T6T%202T8&output=embed"
+                    width="100%" 
+                    height="250" 
+                    style="border:0; border-radius:8px; margin-top:20px;"
+                    loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <img src="images/logo1.png" alt="GuardianEye Logo" style="height:160px;">
+                <h3>GuardianEye Inspections Inc.</h3>
+                <p>Serving Edmonton, St. Albert, Sherwood Park, and surrounding communities.</p>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-phone"></i> 587-568-1140 </p>
+                <p><i class="fas fa-envelope"></i> info@guardianeye.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GuardianEye Inspections Inc. All Rights Reserved.</p>
+
+        </div>
+    </footer>
+
+    <script>
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+
+            burger.addEventListener('click', () => {
+                // Toggle Nav
+                nav.classList.toggle('nav-active');
+
+                // Animate Links
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    }
+                });
+
+                // Burger Animation
+                burger.classList.toggle('toggle');
+            });
+        }
+        navSlide();
+    </script>
+   <script>
+
+</script>
+
+
+</body>
+</html>
