@@ -443,6 +443,20 @@
         }
     </style>
 </head>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+
 <body>
 
     <nav class="navbar">
@@ -463,6 +477,8 @@
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#booking" class="btn-nav">Schedule Now</a></li>
+                <li><button onclick="netlifyIdentity.open()">Login / Admin</button></li>
+
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -629,7 +645,7 @@
             <h2>Ready to Schedule?</h2>
             <p style="color: #ccc; margin-bottom: 30px;">Book your inspection instantly using the calendar below.</p>
             
-            <div class="calendly-inline-widget" data-url="https://calendly.com/laknavpar/3hours" style="min-width:320px;height:700px;"></div>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/nayyarksachin/30min" style="min-width:320px;height:700px;"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             
         </div>
