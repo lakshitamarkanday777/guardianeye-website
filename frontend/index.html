@@ -424,7 +424,84 @@
             color: #666;
         }
 
-        
+        /* COVERAGE SECTION */
+        .coverage-section {
+        padding: 100px 0;
+        background-color: var(--darker-bg);
+        }
+
+        .coverage-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        align-items: center;
+        }
+
+        /* LEFT SIDE */
+        .coverage-left h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        }
+
+        .coverage-subtitle {
+        color: var(--gray-text);
+        margin-bottom: 40px;
+        }
+
+        .coverage-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        }
+
+        .coverage-card {
+        background-color: var(--card-bg);
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        transition: transform 0.3s ease;
+        }
+
+        .coverage-card:hover {
+        transform: translateY(-6px);
+        }
+
+        .coverage-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 8px;
+        font-size: 1.2rem;
+        }
+
+        .coverage-card p {
+        color: var(--gray-text);
+        font-size: 0.95rem;
+        }
+
+        /* RIGHT SIDE */
+        .coverage-right {
+        text-align: center;
+        }
+
+        .coverage-right img {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 14px;
+        margin-bottom: 25px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+        .coverage-layout {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .coverage-grid {
+            grid-template-columns: 1fr;
+        }
+        }
+
 
         /* Responsive Design */
         @media screen and (max-width: 768px) {
@@ -631,6 +708,60 @@
                 Pricing may vary based on property size, age, and location.
             </p>
         </div>
+    </section>
+
+    <section class="coverage-section">
+    <div class="container coverage-layout">
+
+        <!-- LEFT SIDE: CARDS -->
+        <div class="coverage-left">
+        <h2>What’s Included With Your Inspection</h2>
+        <p class="coverage-subtitle">
+            Added protection and peace of mind at no extra cost.
+        </p>
+
+        <div class="coverage-grid">
+            <div class="coverage-card">
+            <h3>90-Day Warranty</h3>
+            <p>Structural & mechanical coverage for added peace of mind.</p>
+            </div>
+
+            <div class="coverage-card">
+            <h3>SewerGard®</h3>
+            <p>Protection against sewer line failures due to normal wear.</p>
+            </div>
+
+            <div class="coverage-card">
+            <h3>MoldSafe®</h3>
+            <p>Coverage for mold growth discovered after inspection.</p>
+            </div>
+
+            <div class="coverage-card">
+            <h3>RecallChek®</h3>
+            <p>Lifetime appliance recall alerts for homeowners.</p>
+            </div>
+
+            <div class="coverage-card">
+            <h3>Roof Protection</h3>
+            <p>5-year roof leak warranty from inspection date.</p>
+            </div>
+        </div>
+        </div>
+
+        <!-- RIGHT SIDE: IMAGE + DOWNLOAD -->
+        <div class="coverage-right">
+            <img src="./images/coverage/coverage.jpeg" alt="Inspection Protection Plan">
+
+            <a
+                href="./images/coverage/FullPackage90Day.pdf"
+                class="btn-secondary"
+                download
+            >
+                Download Full Coverage Brochure
+            </a>
+        </div>
+
+    </div>
     </section>
 
 
