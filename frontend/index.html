@@ -105,9 +105,8 @@
         .logo h1,
         .logo h2 {
             font-size: 2.2rem;
-            color: #000;
+            color: #ad1212;
             margin: 0;
-            
             text-transform: none;      /* ❌ removes ALL CAPS */
         letter-spacing: 0.5px;     /* cleaner look */
         font-weight: 700;
@@ -439,6 +438,10 @@
         }
 
         /* LEFT SIDE */
+        .coverage-left {
+            transform: translateY(-70px);
+        }
+
         .coverage-left h2 {
         font-size: 2.5rem;
         margin-bottom: 10px;
@@ -478,19 +481,33 @@
         font-size: 0.95rem;
         }
 
+        /* Center the Roof Protection card */
+        .coverage-card--center {
+        grid-column: 1 / -1;   /* span both columns */
+        justify-self: center; /* center horizontally */
+        max-width: 48%;       /* keeps it visually balanced */
+        }
+
+
         /* RIGHT SIDE */
         .coverage-right {
         text-align: center;
+        transform: translateX(200px) ;
+
         }
 
         .coverage-right img {
-        width: auto
+        width: auto;
         max-width: 660px;        /* ⬆️ bigger */
         height: 700px;              /* ⬆️ bigger */
         border-radius: 18px;
         box-shadow: 0 20px 50px rgba(0,0,0,0.75);
-
+        
         }
+        .coverage-right .btn-secondary {
+            margin-top: 45px;   /* increase to 30–40px if needed */
+        }
+
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
@@ -602,7 +619,7 @@
                 <a href="#" style="display:flex;align-items:center;gap:10px;">
                     <img src="images/logo1.png" alt="GuardianEye Logo" class="logo-img">
 
-                    <h2>GuardianEye</h2>
+                    <h2>GuardianEye Inspections </h2>
                 </a>
             </div>
 
@@ -611,7 +628,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <!-- <li><a href="blog.html">Blog</a></li> -->
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#booking" class="btn-nav">Schedule Now</a></li>
                 <!-- <li><button onclick="netlifyIdentity.open()">Login / Admin</button></li> -->
@@ -671,7 +688,7 @@
                 <div class="feature-card">
                     <h3>Full Home Inspection</h3>
                     <p>Complete inspection of structure, roof, electrical, plumbing, HVAC, and interior/exterior systems.</p>
-                    <p><strong>Starting at $475 + GST</strong></p>
+                    <p><strong>Starting at $500 + GST</strong></p>
                 </div>
 
                 <div class="feature-card">
@@ -695,7 +712,7 @@
                 <div class="feature-card">
                     <h3>New Construction Inspection</h3>
                     <p>Pre-delivery inspection to ensure quality and code compliance.</p>
-                    <p><strong>Contact for Pricing</strong></p>
+                    <p><strong>Starting at $500 + GST</strong></p>
                 </div>
 
                 <div class="feature-card">
@@ -743,10 +760,11 @@
             <p>Lifetime appliance recall alerts for homeowners.</p>
             </div>
 
-            <div class="coverage-card">
+            <div class="coverage-card coverage-card--center">
             <h3>Roof Protection</h3>
             <p>5-year roof leak warranty from inspection date.</p>
             </div>
+
         </div>
         </div>
 
@@ -962,7 +980,7 @@
 
                 <!-- LEFT: CONTACT INFO -->
                 <div class="contact-info">
-                    <h3>GuardianEye Inspections Inc.</h3>
+                    <h3>GuardianEye Inspections Inc</h3>
 
                     <p><i class="fas fa-map-marker-alt"></i>
                     1696 27 Street NW,<br>
