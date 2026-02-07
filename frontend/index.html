@@ -8,6 +8,10 @@
     
     <style>
         /* --- CSS STYLES --- */
+            html, body {
+                overflow-x: hidden;
+            }
+        
         :root {
             --primary-color: #d4af37; /* Gold/Yellow accent from reference logo */
             --dark-bg: #1a1a1a;       /* Dark Grey background */
@@ -414,7 +418,7 @@
                 box-shadow: -2px 0 10px rgba(0,0,0,0.1);
             }
             .nav-links li {
-                opacity: 0;
+                opacity: 1;
                 margin: 30px 0;
             }
             .burger {
@@ -435,6 +439,27 @@
             .about-text {
                 order: 1;
             }
+            .navbar {
+                height: auto;
+                padding: 12px 0;
+            }
+
+            .nav-container {
+                width: 95%;
+            }
+
+            .logo-img {
+                height: 55px;
+                transform: translateY(0);
+                margin-left: 0;
+            }
+
+            .logo h2 {
+                font-size: 1.4rem;
+            }
+            .logo a {
+                gap: 8px;
+            }
         }
 
         @keyframes navLinkFade {
@@ -446,6 +471,7 @@
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
+    
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
       if (!user) {
@@ -814,30 +840,29 @@
     </footer>
 
     <script>
-        const navSlide = () => {
-            const burger = document.querySelector('.burger');
-            const nav = document.querySelector('.nav-links');
-            const navLinks = document.querySelectorAll('.nav-links li');
+    const navSlide = () => {
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li a');
 
-            burger.addEventListener('click', () => {
-                // Toggle Nav
-                nav.classList.toggle('nav-active');
+        // Toggle menu on burger click
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
 
-                // Animate Links
-                navLinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = '';
-                    } else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                    }
-                });
-
-                // Burger Animation
-                burger.classList.toggle('toggle');
+        // CLOSE menu when any link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav-active');
+                burger.classList.remove('toggle');
             });
-        }
-        navSlide();
+        });
+    };
+
+    navSlide();
     </script>
+
    <script>
 
 </script>

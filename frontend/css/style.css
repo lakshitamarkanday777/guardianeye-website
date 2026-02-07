@@ -1,4 +1,8 @@
 /* --- CSS STYLES --- */
+       html, body {
+        overflow-x: hidden;
+        }
+
         :root {
             --primary-color: #d4af37; /* Gold/Yellow accent from reference logo */
             --dark-bg: #1a1a1a;       /* Dark Grey background */
