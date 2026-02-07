@@ -1,5 +1,8 @@
 /* --- CSS STYLES --- */
-
+            html, body {
+                overflow-x: hidden;
+            }
+        
         :root {
             --primary-color: #d4af37; /* Gold/Yellow accent from reference logo */
             --dark-bg: #1a1a1a;       /* Dark Grey background */
@@ -95,8 +98,10 @@
             font-size: 2.2rem;
             color: #000;
             margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            
+            text-transform: none;      /* ❌ removes ALL CAPS */
+        letter-spacing: 0.5px;     /* cleaner look */
+        font-weight: 700;
         }
 
         .logo span {
@@ -330,6 +335,29 @@
         transition: transform 0.3s ease;
         }
 
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            cursor: zoom-out;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+
         .gallery-track img:hover {
         transform: scale(1.06);
         }
@@ -406,7 +434,7 @@
                 box-shadow: -2px 0 10px rgba(0,0,0,0.1);
             }
             .nav-links li {
-                opacity: 0;
+                opacity: 1;
                 margin: 30px 0;
             }
             .burger {
@@ -426,6 +454,32 @@
             }
             .about-text {
                 order: 1;
+            }
+            .navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                height: auto;
+                padding: 12px 0;
+            }
+
+            .nav-container {
+                width: 95%;
+            }
+
+            .logo-img {
+                height: 55px;
+                transform: translateY(0);
+                margin-left: 0;
+            }
+
+            .logo h2 {
+                font-size: 1.4rem;
+            }
+            .logo a {
+                gap: 8px;
             }
         }
 
